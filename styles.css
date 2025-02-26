@@ -74,3 +74,13 @@ table {
 img {
     border-radius: 10px;
 }
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+td {
+    text-align: left;
+    padding: 10px;
+}
