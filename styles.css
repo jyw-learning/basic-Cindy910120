@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff5e62);
+    background: linear-gradient(45deg, #807eff, #a84ffa, #b811fa);
     background-size: 200% 200%;
     animation: gradientAnimation 5s infinite alternate;
 }
@@ -44,7 +44,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 3px solid #ff5e62;
+    border: 3px solid hsl(182, 88%, 74%);
 }
 
 /* 文字樣式 */
