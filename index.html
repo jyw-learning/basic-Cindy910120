@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的第一個 GitHub Pages 網站</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <h1>歡迎來到我的網站！</h1>
@@ -24,8 +27,29 @@
         </thead>
         <tbody>
             <tr>
-                <td><img src="in.PNG" alt="內迴路公式" width="500"></td>
-                <td><img src="out.PNG" alt="外迴路公式" width="500"></td>
+                <td>
+                    \[
+                    \begin{array}{|c|}
+                    \hline
+                    \dot{q} = \frac{1}{2} q \otimes \begin{bmatrix} 0 \\ \boldsymbol{\omega} \end{bmatrix} \\
+                    \hline
+                    \dot{\boldsymbol{\omega}} = J^{-1} \left[ \boldsymbol{\tau} - \boldsymbol{\omega} \times (J \boldsymbol{\omega}) \right] \\
+                    \hline
+                    \end{array}
+                    \]
+                </td>
+                <td>
+                    \[
+                    \begin{array}{|c|}
+                    \hline
+                    \dot{\boldsymbol{x}} = \boldsymbol{v}, \quad \boldsymbol{x} \in \mathbb{R}^3, \quad \boldsymbol{v} \in \mathbb{R}^3 \\
+                    \hline
+                    m\dot{\boldsymbol{v}} = mg\boldsymbol{e}_3 - f\boldsymbol{b}_3, \quad f \in \mathbb{R}^+, \quad \boldsymbol{b}_3 \in \mathbb{R}^3, \\
+                    \boldsymbol{e}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}^T \\
+                    \hline
+                    \end{array}
+                    \]
+                </td>
             </tr>
         </tbody>
     </table>
