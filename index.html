@@ -4,45 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的第一個 GitHub Pages 網站</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(45deg, #77bffa, #4fbaf8, #0f8ff8);
-            background-size: 200% 200%;
-            animation: gradientAnimation 5s infinite alternate;
-        }
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-        h1 { color: rgba(49, 5, 247, 0.548); font-size: 30px; }
-        h2 { color: rgba(75, 12, 247, 0.548); font-size: 30px; }
-        h3 { color: rgba(157, 49, 247, 0.548); font-size: 30px; }
-        h4 { color: rgba(189, 122, 245, 0.548); font-size: 20px; }
-        p, a { color: white; }
-        table { width: 50%; background: rgba(255, 255, 255, 0.2); border-radius: 10px; padding: 10px; }
-        img { border-radius: 10px; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>歡迎來到我的網站！</h1>
     <p>這是我的 GitHub Pages 部署網站。</p>
-    <h2>自我介紹</h2>
-    <p>電機碩一 11378002 林芊蓉</p>
-    <p>實驗室網站: <a href="https://sites.google.com/view/lab816" target="_blank">點此查看</a></p>
-    <p>研討會論文: <a href="https://ieeexplore.ieee.org/document/10773309" target="_blank">點此查看</a></p>
-    <img src="photo.jpg" alt="無人機圖片" width="400">
+    <div class="profile-card">
+        <img src="photo.jpg" alt="個人照片" class="profile-img">
+        <h2>林芊蓉</h2>
+        <p>電機碩一 11378002</p>
+        <p>實驗室網站: <a href="https://sites.google.com/view/lab816" target="_blank">點此查看</a></p>
+        <p>研討會論文: <a href="https://ieeexplore.ieee.org/document/10773309" target="_blank">點此查看</a></p>
+    </div>
     <h3>無人機基本公式</h3>
     <table align="center">
         <thead>
