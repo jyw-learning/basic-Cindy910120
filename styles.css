@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #807eff, #a84ffa, #b811fa);
+    background: linear-gradient(45deg, #ebebf0, #9c96f5, #f7f1fa);
     background-size: 200% 200%;
     animation: gradientAnimation 5s infinite alternate;
 }
