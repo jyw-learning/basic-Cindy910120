@@ -8,10 +8,46 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #ebebf0, #9c96f5, #f7f1fa);
+    background: linear-gradient(45deg, #ebebf0, #96b4f5, #f7f1fa);
     background-size: 200% 200%;
     animation: gradientAnimation 5s infinite alternate;
 }
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+#introText {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+#homeBtn {
+    margin-top: 20px;
+}
+
 
 @keyframes gradientAnimation {
     0% {
@@ -27,10 +63,13 @@ body {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 300px;
+    padding: 10px;
+    width: auto;
     text-align: center;
     transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-card:hover {
