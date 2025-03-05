@@ -11,9 +11,12 @@
 </head>
 <body>
     <div class="container" id="buttonContainer">
-        <button id="introBtn">自我介紹</button>
-        <button id ="Class_test">課程測試</button>
-        <button>按鈕 3</button>
+        <h1>歡迎來到我的網站！</h1>
+        <div class="button-group">
+            <button id="introBtn">自我介紹</button>
+            <button id="Class_test">課程測試</button>
+            <button>按鈕 3</button>
+        </div>
     </div>
     <div id="introText" class="hidden">
         <h1>歡迎來到我的網站！</h1>
@@ -66,7 +69,7 @@
         <h1>測試測試</h1>
         <button id="backBtn">回首頁</button>
     </div>
-    
+
     <script>
         document.getElementById("introBtn").addEventListener("click", function() {
             document.getElementById("buttonContainer").classList.add("hidden");

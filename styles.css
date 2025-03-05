@@ -34,6 +34,12 @@ button:hover {
     background-color: #0056b3;
 }
 
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .hidden {
     display: none;
 }
