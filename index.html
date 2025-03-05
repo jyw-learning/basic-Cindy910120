@@ -12,7 +12,7 @@
 <body>
     <div class="container" id="buttonContainer">
         <button id="introBtn">自我介紹</button>
-        <button>按鈕 2</button>
+        <button id ="Class_test">課程測試</button>
         <button>按鈕 3</button>
     </div>
     <div id="introText" class="hidden">
@@ -61,6 +61,12 @@
     </table>
         <button id="homeBtn">回首頁</button>
     </div>
+
+    <div id="testText" class="hidden">
+        <h1>測試測試</h1>
+        <button id="backBtn">回首頁</button>
+    </div>
+    
     <script>
         document.getElementById("introBtn").addEventListener("click", function() {
             document.getElementById("buttonContainer").classList.add("hidden");
@@ -70,6 +76,16 @@
         document.getElementById("homeBtn").addEventListener("click", function() {
             document.getElementById("buttonContainer").classList.remove("hidden");
             document.getElementById("introText").classList.add("hidden");
+        });
+
+        document.getElementById("Class_test").addEventListener("click", function() {
+            document.getElementById("buttonContainer").classList.add("hidden");
+            document.getElementById("testText").classList.remove("hidden");
+        });
+        
+        document.getElementById("backBtn").addEventListener("click", function() {
+            document.getElementById("buttonContainer").classList.remove("hidden");
+            document.getElementById("testText").classList.add("hidden");
         });
     </script>
 </body>
