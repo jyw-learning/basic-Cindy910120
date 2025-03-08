@@ -1,85 +1,114 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    display: flex;
     height: 100vh;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg, #ebebf0, #96b4f5, #f7f1fa);
-    background-size: 200% 200%;
-    animation: gradientAnimation 5s infinite alternate;
+    font-family: Arial, sans-serif;
 }
 
-/* 主要容器 */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vh;
-    /*max-width: 600px;*/
-}
-
-/* 按鈕群組 */
-.button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 確保按鈕群組內容置中 */
-    gap: 10px;
-    width: 100%;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007BFF;
+/* ---- 左側選單 (預設隱藏) ---- */
+.sidebar {
+    width: 220px;
+    background-color: #333;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ---- 展開時顯示 ---- */
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.dropdown-btn {
     width: 100%;
-    max-width: 300px;
-    text-align: center;
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-.hidden {
+/* ---- 修正選單的位置 (預設隱藏) ---- */
+.dropdown-menu {
     display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
 }
 
-/* 介紹區塊 */
-#introText, #testText {
+.dropdown-menu button {
+    background-color: #555;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    width: 100%;
+}
+
+.dropdown-menu button:hover {
+    background-color: #777;
+}
+
+/* ---- 右側內容區 ---- */
+.content {
+    flex-grow: 1;
+    padding: 20px;
     text-align: center;
-    font-size: 18px;
-    color: #333;
-    width: 90%;
-    max-width: 600px;
+    margin-left: 220px;
+    transition: margin-left 0.3s ease-in-out;
 }
 
-/* 返回按鈕 */
-#homeBtn, #backBtn {
-    margin-top: 20px;
+/* ---- 手機版 ---- */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #444;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
 }
 
-/* 介紹卡片 */
+/* ---- 按鈕一中卡片樣式 ---- */
 .profile-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     max-width: 400px;
     text-align: center;
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 卡片內所有內容置中 */
+    align-items: center;
+    /* 卡片內所有內容置中 */
     justify-content: center;
 }
 
@@ -108,7 +137,8 @@ h2 {
     font-size: 24px;
 }
 
-p, a {
+p,
+a {
     color: #080808;
     font-size: 16px;
 }
@@ -126,45 +156,9 @@ table {
 }
 
 /* 表格內容對齊 */
-td, th {
-    text-align: center;  /* 所有內容水平置中 */
+td,
+th {
+    text-align: center;
+    /* 所有內容水平置中 */
     padding: 10px;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 20px;
-    }
-
-    .button-group {
-        width: 100%;
-        align-items: center;
-    }
-
-    button {
-        font-size: 14px;
-        align-items: center;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    p, a {
-        font-size: 14px;
-    }
-
-    table {
-        width: 100%;
-    }
-    .profile-card {
-        width: 100%;
-        align-items: center;
-    }
 }

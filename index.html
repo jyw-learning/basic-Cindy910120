@@ -1,100 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flexbox 按鈕</title>
-    <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <title>RWD 選單顯示內容</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
     <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
-    <div class="container" id="buttonContainer">
-        <h1>歡迎來到我的網站！</h1>
-        <div class="button-group">
-            <button id="introBtn">自我介紹</button>
-            <button id="Class_test">課程測試</button>
-            <button>按鈕 3</button>
+
+    <!-- 手機版選單按鈕 -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰ 選單</button>
+
+    <!-- 左側選單 -->
+    <div class="sidebar" id="sidebar">
+        <button class="dropdown-btn" onclick="toggleDropdown()">☰ 選單</button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <button onclick="showContent('內容 A')">
+                內容 A
+            </button>
+            <button onclick="showContent('內容 B')">
+                內容 B
+            </button>
+            <button onclick="showContent('內容 C')">
+                內容 C
+            </button>
+            <button onclick="showContent('內容 D')">
+                內容 D
+            </button>
+            <button onclick="showContent('內容 E')">
+                內容 E
+            </button>
         </div>
     </div>
-    <div id="introText" class="hidden">
-        <h1>歡迎來到我的網站！</h1>
-    <p>這是我的 GitHub Pages 部署網站。</p>
-    <div class="profile-card">
-        <img src="photo.jpg" alt="個人照片" class="profile-img">
-        <h2>林芊蓉</h2>
-        <p>電機碩一 11378002</p>
-        <p>實驗室網站: <a href="https://sites.google.com/view/lab816" target="_blank">點此查看</a></p>
-        <p>研討會論文: <a href="https://ieeexplore.ieee.org/document/10773309" target="_blank">點此查看</a></p>
-    </div>
-    <h3>無人機基本公式</h3>
-    <table align="center">
-        <thead>
-            <th>內迴路公式</th>
-            <th>外迴路公式</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    \[
-                    \begin{array}{|c|}
-                    \hline
-                    \dot{q} = \frac{1}{2} q \otimes \begin{bmatrix} 0 \\ \boldsymbol{\omega} \end{bmatrix} \\
-                    \hline
-                    \dot{\boldsymbol{\omega}} = J^{-1} \left[ \boldsymbol{\tau} - \boldsymbol{\omega} \times (J \boldsymbol{\omega}) \right] \\
-                    \hline
-                    \end{array}
-                    \]
-                </td>
-                <td>
-                    \[
-                    \begin{array}{|c|}
-                    \hline
-                    \dot{\boldsymbol{x}} = \boldsymbol{v}, \quad \boldsymbol{x} \in \mathbb{R}^3, \quad \boldsymbol{v} \in \mathbb{R}^3 \\
-                    \hline
-                    m\dot{\boldsymbol{v}} = mg\boldsymbol{e}_3 - f\boldsymbol{b}_3, \quad f \in \mathbb{R}^+, \quad \boldsymbol{b}_3 \in \mathbb{R}^3, \\
-                    \boldsymbol{e}_3 = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}^T \\
-                    \hline
-                    \end{array}
-                    \]
-                </td>
-            </tr>
-        </tbody>
-    </table>
-        <button id="homeBtn">回首頁</button>
-    </div>
 
-    <div id="testText" class="hidden">
-        <div class="navbar">
-            <a href="#">首頁</a>
-            <a href="#">關於我們</a>
-            <a href="#">服務</a>
-            <a href="#">聯絡</a>
-          </div>
-        <button id="backBtn">回首頁</button>
+    <!-- 右側顯示內容 -->
+    <div class="content" id="content-display">
+        <h2>請選擇一個選項</h2>
     </div>
 
     <script>
-        document.getElementById("introBtn").addEventListener("click", function() {
-            document.getElementById("buttonContainer").classList.add("hidden");
-            document.getElementById("introText").classList.remove("hidden");
-        });
-        
-        document.getElementById("homeBtn").addEventListener("click", function() {
-            document.getElementById("buttonContainer").classList.remove("hidden");
-            document.getElementById("introText").classList.add("hidden");
-        });
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
 
-        document.getElementById("Class_test").addEventListener("click", function() {
-            document.getElementById("buttonContainer").classList.add("hidden");
-            document.getElementById("testText").classList.remove("hidden");
-        });
-        
-        document.getElementById("backBtn").addEventListener("click", function() {
-            document.getElementById("buttonContainer").classList.remove("hidden");
-            document.getElementById("testText").classList.add("hidden");
-        });
+        function toggleDropdown() {
+            var menu = document.getElementById('dropdownMenu');
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        function showContent(text) {
+            var contentDisplay = document.getElementById('content-display');
+
+            if (text === '內容 A') {
+                contentDisplay.innerHTML = `
+                    <div id="introText">
+                        <h1>歡迎來到我的網站！</h1>
+                        <p>這是我的 GitHub Pages 部署網站。</p>
+                        <div class="profile-card">
+                            <img src="photo.jpg" alt="個人照片" class="profile-img" style="width:150px; border-radius:10px;">
+                            <h2>林芊蓉</h2>
+                            <p>電機碩一 11378002</p>
+                            <p>實驗室網站: <a href="https://sites.google.com/view/lab816" target="_blank">點此查看</a></p>
+                            <p>研討會論文: <a href="https://ieeexplore.ieee.org/document/10773309" target="_blank">點此查看</a></p>
+                        </div>
+                        <h3>無人機基本公式</h3>
+                        <table align="center">
+                            <thead>
+                                <tr>
+                                    <th>內迴路公式</th>
+                                    <th>外迴路公式</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span data-latex="\\dot{q} = \\frac{1}{2} q \\otimes \\begin{bmatrix} 0 \\\\ \\boldsymbol{\\omega} \\end{bmatrix}"></span>
+                                        <br>
+                                        <span data-latex="\\dot{\\boldsymbol{\\omega}} = J^{-1} \\left[ \\boldsymbol{\\tau} - \\boldsymbol{\\omega} \\times (J \\boldsymbol{\\omega}) \\right]"></span>
+                                    </td>
+                                    <td>
+                                        <span data-latex="\\dot{\\boldsymbol{x}} = \\boldsymbol{v}, \\quad \\boldsymbol{x} \\in \\mathbb{R}^3, \\quad \\boldsymbol{v} \\in \\mathbb{R}^3"></span>
+                                        <br>
+                                        <span data-latex="m\\dot{\\boldsymbol{v}} = mg\\boldsymbol{e}_3 - f\\boldsymbol{b}_3, \\quad f \\in \\mathbb{R}^+, \\quad \\boldsymbol{b}_3 \\in \\mathbb{R}^3"></span>
+                                        <br>
+                                        <span data-latex="\\boldsymbol{e}_3 = \\begin{bmatrix} 0 \\\\ 0 \\\\ 1 \\end{bmatrix}^T"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                // 解析 data-latex 內的 LaTeX 公式
+                document.querySelectorAll("[data-latex]").forEach(el => {
+                    el.innerHTML = `\\[ ${el.getAttribute("data-latex")} \\]`;
+                });
+
+                // MathJax 重新解析公式
+                if (window.MathJax && MathJax.typeset) {
+                    MathJax.typeset();
+                } else {
+                    console.warn("MathJax 尚未載入，請稍候再試。");
+                }
+            } else {
+                contentDisplay.innerHTML = "<h2>" + text + "</h2>";
+            }
+            // 📌 如果是手機版，點擊選單後自動收回
+            if (window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+        }
     </script>
+
 </body>
+
 </html>
