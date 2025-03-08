@@ -16,9 +16,10 @@ body {
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 600px;
+    width: 100vh;
+    /*max-width: 600px;*/
 }
 
 /* 按鈕群組 */
@@ -72,6 +73,7 @@ button:hover {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     width: 100%;
+    margin:0 auto;
     max-width: 400px;
     text-align: center;
     transition: transform 0.3s;
