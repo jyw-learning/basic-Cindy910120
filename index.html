@@ -119,7 +119,72 @@
                 } else {
                     console.warn("MathJax 尚未載入，請稍候再試。");
                 }
-            } else {
+            }else if (text === '內容 B') {
+                contentDisplay.innerHTML = `
+                    <div id="timer">10</div>
+                    <button id="startBtn">開始</button>
+                    <button id="stopBtn">停止</button>
+                    <button id="bigBtn" class="center-button" disabled>點我！</button>
+                    <style>
+                        #timer { font-size: 2em; margin: 20px; text-align: center; }
+                        .center-button {
+                            width: 120px; height: 120px; border-radius: 50%;
+                            background-color: red; color: white; font-size: 20px;
+                            border: none; cursor: pointer; position: absolute;
+                            top: 50%; left: 50%; transform: translate(-50%, -50%);
+                        }
+                        #startBtn, #stopBtn { margin: 10px; padding: 10px 20px; font-size: 16px; }
+                    </style>
+                `;
+                
+                let countdown;
+                let seconds = 10;
+                let clickCount = 0;
+                let gameRunning = false;
+
+                alert("遊戲規則介紹：\n請在十秒內，按中間的按鈕。");
+
+                document.getElementById("startBtn").addEventListener("click", function () {
+                    clearInterval(countdown);
+                    seconds = 10;
+                    clickCount = 0;
+                    gameRunning = true;
+
+                    document.getElementById("timer").innerText = seconds;
+                    document.getElementById("bigBtn").disabled = false;
+
+                    countdown = setInterval(function () {
+                        seconds--;
+                        document.getElementById("timer").innerText = seconds;
+
+                        if (seconds <= 0) {
+                            clearInterval(countdown);
+                            gameRunning = false;
+                            document.getElementById("bigBtn").disabled = true;
+                            alert(`時間到！你按了 ${clickCount} 次`);
+                        }
+                    }, 1000);
+                });
+
+                document.getElementById("stopBtn").addEventListener("click", function () {
+                    clearInterval(countdown);
+                    gameRunning = false;
+                    document.getElementById("bigBtn").disabled = true;
+                });
+
+                document.getElementById("bigBtn").addEventListener("click", function () {
+                    if (gameRunning) {
+                        clickCount++;
+                    }
+                });
+            } else if (text === '內容 C') {
+                contentDisplay.innerHTML = "<h2>這是內容 C</h2>";
+            } else if (text === '內容 D') {
+                contentDisplay.innerHTML = "<h2>這是內容 D</h2>";
+            } else if (text === '內容 E') {
+                contentDisplay.innerHTML = "<h2>這是內容 E</h2>";
+            } 
+            else {
                 contentDisplay.innerHTML = "<h2>" + text + "</h2>";
             }
             // 📌 如果是手機版，點擊選單後自動收回

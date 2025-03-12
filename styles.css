@@ -162,3 +162,28 @@ th {
     /* 所有內容水平置中 */
     padding: 10px;
 }
+#timer {
+    font-size: 2em;
+    margin: 20px;
+}
+
+.center-button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#startBtn, #stopBtn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
