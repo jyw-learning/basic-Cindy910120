@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RWD 選單顯示內容</title>
+    <title>選單介面</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         window.MathJax = {
@@ -19,6 +19,12 @@
 </head>
 
 <body>
+    <div class="effect-buttons">
+        <button onclick="startRain()">下雨</button>
+        <button onclick="startSnow()">下雪</button>
+        <button onclick="toggleDarkMode()">暗黑模式</button>
+    </div>
+    <canvas id="effectCanvas"></canvas>
 
     <!-- 手機版選單按鈕 -->
     <button class="menu-toggle" onclick="toggleSidebar()">☰ 選單</button>
@@ -47,10 +53,82 @@
 
     <!-- 右側顯示內容 -->
     <div class="content" id="content-display">
-        <h2>請選擇一個選項</h2>
+        <h2>請選在左邊選擇內容</h2>
     </div>
 
     <script>
+        let effectCtx = document.getElementById('effectCanvas').getContext('2d');
+        let effectType = '';
+        let particles = [];
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        function toggleDropdown() {
+            var menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+
+        function startRain() {
+            effectType = 'rain';
+            createParticles();
+        }
+
+        function startSnow() {
+            effectType = 'snow';
+            createParticles();
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    speedY: Math.random() * 4 + 2,
+                    size: Math.random() * 4 + 1
+                });
+            }
+        }
+
+        function animateEffect() {
+            effectCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            effectCtx.fillStyle = effectType === 'rain' ? 'blue' : 'white';
+            particles.forEach(p => {
+                effectCtx.beginPath();
+                if (effectType === 'rain') {
+                    effectCtx.rect(p.x, p.y, 2, p.size * 4);
+                } else {
+                    effectCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                }
+                effectCtx.fill();
+
+                p.y += p.speedY;
+                if (p.y > window.innerHeight) {
+                    p.y = 0;
+                    p.x = Math.random() * window.innerWidth;
+                }
+            });
+            requestAnimationFrame(animateEffect);
+        }
+
+        animateEffect();
+
+        window.addEventListener('resize', () => {
+            document.getElementById('effectCanvas').width = window.innerWidth;
+            document.getElementById('effectCanvas').height = window.innerHeight;
+            createParticles();
+        });
+
+        document.getElementById('effectCanvas').width = window.innerWidth;
+        document.getElementById('effectCanvas').height = window.innerHeight;
+        
         function toggleSidebar() {
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('show');
